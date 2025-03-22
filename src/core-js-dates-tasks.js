@@ -165,9 +165,9 @@ function isDateInPeriod(date, period) {
  */
 function formatDate(date) {
   const d = new Date(date);
-  let day = d.getDate();
-  const month = d.getMonth() + 1;
-  const year = d.getFullYear();
+  const day = d.getUTCDate();
+  const month = d.getUTCMonth() + 1;
+  const year = d.getUTCFullYear();
   let hour = d.getUTCHours();
   let option = 'AM';
   if (hour >= 12) {
@@ -178,9 +178,6 @@ function formatDate(date) {
   }
   const min = d.getMinutes() < 10 ? `0${d.getMinutes()}` : d.getMinutes();
   const sec = d.getSeconds() < 10 ? `0${d.getSeconds()}` : d.getSeconds();
-  if (option === 'PM' && hour === 11 && min === 59 && sec === 59) {
-    day -= 1;
-  }
   return `${month}/${day}/${year}, ${hour}:${min}:${sec} ${option}`;
 }
 
