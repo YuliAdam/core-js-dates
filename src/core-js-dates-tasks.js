@@ -18,7 +18,7 @@
  * '04 Dec 1995 00:12:00 UTC' => 818035920000
  */
 function dateToTimestamp(date) {
-  return Date.parse(date.toString());
+  return Date.parse(date);
 }
 
 /**
@@ -62,7 +62,7 @@ function getDayName(date) {
     6: 'Saturday',
     0: 'Sunday',
   };
-  return days[new Date(date).getDay()];
+  return days[new Date(date).getUTCDay()];
 }
 
 /**
